@@ -1,0 +1,15 @@
+{% extends 'magazine/index.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% for product in products %}
+        <h2>{{ product.name_product }}</h2>
+        <p>{{ product.code_product }}</p>
+        {% if product.base_image_product %}
+        <img src="{{ MEDIA_URL }}{{ product.base_image_product }}" width="150px"/>
+        {% else %}
+        <img src="{% static 'no_image/noimagefound.jpg' %}" alt="{{ product.name_product }} " width="150px"/>
+        {% endif %}
+        <p>{{ product.description_product|safe }}</p>
+    {% endfor %}
+{% endblock %}
